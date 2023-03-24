@@ -1,1 +1,8 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+button {
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+    border: transparent;
+}
