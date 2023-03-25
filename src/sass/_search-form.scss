@@ -17,6 +17,8 @@
 }
 
 .search-button {
+  display: inline-flex;
+  align-items: center;
   padding: 7px;
   font-size: 18px;
   font-weight: 500;
@@ -24,6 +26,6 @@
   background-color: #edf0f5;
   &:hover,
   &:focus {
-    background-color: #d7defb;
+    background-color: #dde3fa;
   }
 }
