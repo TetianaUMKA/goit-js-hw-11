@@ -22,4 +22,8 @@
   font-weight: 500;
   line-height: 1.5;
   background-color: #edf0f5;
+  &:hover,
+  &:focus {
+    background-color: #d7defb;
+  }
 }
