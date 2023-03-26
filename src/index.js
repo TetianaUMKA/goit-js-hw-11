@@ -10,6 +10,8 @@ const loadMoreBtn = document.querySelector('.load-more')
 
 let page = 1;
 
+const trimInputData = () => input.value.trim();
+
 loadMoreBtn.style.display = 'none';
 form.addEventListener('submit', onSearch);
 loadMoreBtn.addEventListener('click', onBtnLoadMore);
@@ -20,7 +22,7 @@ function onSearch(event) {
   page = 1;
   gallery.innerHTML = '';
 
-  const name = input.value.trim();
+  const name = trimInputData();
 
   if (name !== '') {
     pixabay(name);
@@ -34,7 +36,7 @@ function onSearch(event) {
 }
 
 function onBtnLoadMore() {
-  const name = input.value.trim();
+  const name = trimInputData();
   page += 1;
   pixabay(name, page);
 }
@@ -82,6 +84,12 @@ const simpleLightBox = new SimpleLightbox('.gallery a', {
 });
 
 function notification(length, totalHits) {
+  if (totalHits === 0) {
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
+    return;
+  }
   if (page === 1) {
     loadMoreBtn.style.display = 'flex';
 
