@@ -86,8 +86,10 @@ const simpleLightBox = new SimpleLightbox('.gallery a', {
 function notification(length, totalHits) {
   if (totalHits === 0) {
     Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'Sorry, there are no images matching your search query. Please try again.'   
     );
+    input.value = '';
+    loadMoreBtn.style.display = 'none';
     return;
   }
   if (page === 1) {
