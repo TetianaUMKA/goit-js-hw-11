@@ -6,7 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input');
 const gallery = document.querySelector('.gallery');
-const loadMoreBtn = document.querySelector('.load-more')
+const loadMoreBtn = document.querySelector('.load-more');
 
 let page = 1;
 
@@ -30,7 +30,12 @@ function onSearch(event) {
     loadMoreBtn.style.display = 'none';
 
     return Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'Sorry, there are no images matching your search query. Please try again.',
+      {
+        width: '600px',
+        fontSize: '20px',
+        svgSize: '300px',
+      },
     );
   }
 }
@@ -40,6 +45,7 @@ function onBtnLoadMore() {
   page += 1;
   pixabay(name, page);
 }
+
 
 async function pixabay(name, page) {
   const API_URL = 'https://pixabay.com/api/';
@@ -86,7 +92,12 @@ const simpleLightBox = new SimpleLightbox('.gallery a', {
 function notification(length, totalHits) {
   if (totalHits === 0) {
     Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'   
+      'Sorry, there are no images matching your search query. Please try again.',
+      {
+        width: '500px',
+        fontSize: '20px',
+        svgSize: '300px',
+      },
     );
     input.value = '';
     loadMoreBtn.style.display = 'none';
@@ -95,13 +106,30 @@ function notification(length, totalHits) {
   if (page === 1) {
     loadMoreBtn.style.display = 'flex';
 
-    Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+    Notiflix.Notify.success(
+      `Hooray! We found ${totalHits} images.`,
+      {
+        width: '500px',
+        fontSize: '20px',
+        svgSize: '300px',
+      },
+    );
   }
   if (length < 40) {
     loadMoreBtn.style.display = 'none';
 
     Notiflix.Notify.info(
-      "We're sorry, but you've reached the end of search results."
+      "We're sorry, but you've reached the end of search results.",
+      {
+        width: '500px',
+        fontSize: '20px',
+        svgSize: '300px',
+      },
     );
   }
 }
+
+// const backToUpScroll = document.querySelector('back-to-up');
+// backToUpScroll.onclick = () => {
+//   window.scrollTo(0, 0);
+// }
